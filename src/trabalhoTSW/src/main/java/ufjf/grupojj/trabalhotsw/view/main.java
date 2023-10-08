@@ -12,20 +12,6 @@ import java.util.Scanner;
  */
 public class main {
     
-    //Imprime aquario
-    public static void printAquario(int[][] aquario,int x,int y)
-    {
-        for(int i = 0; i < x; i++)
-        {
-            System.out.println();
-                for(int j = 0; j < y; j++)
-                {
-                    System.out.print("[ ]");
-                }
-        }
-        System.out.println();
-    }
-    
     //Verifica se o jogo acabou
     public static boolean verificaFim(int peixes_b)
     {
@@ -56,12 +42,12 @@ public class main {
         
     }
     
-    
     public static void main(String[] args) {
         
+        Scanner sc = new Scanner(System.in);
+
         boolean ativo = true;   //se jogo estiver acontecendo = treu caso acabe = false
         
-        Scanner sc = new Scanner(System.in);
         int dim_x = 0;          //quantidade de linhas do aquario
         int dim_y = 0;          //quantidade de colunas do aquario
         
@@ -73,30 +59,48 @@ public class main {
         int rb = 0;             //quantidade de peixes comidos para criar filho
         int mb = 0;             //movimentos para morrer de fome 
         
-        
-        System.out.println("Tamanho do aquario: (NxM)");
-        dim_x = sc.nextInt();
-        dim_y = sc.nextInt();
-        
-        System.out.println("Quantidade de peixes de tipo A:");
-        peixes_a = sc.nextInt();
-        ra = sc.nextInt();
-        ma = sc.nextInt();
-        
-        System.out.println("Quantidade de peixes de tipo B:");
-        peixes_b = sc.nextInt();
-        rb = sc.nextInt();
-        mb = sc.nextInt();
-        
-        int[][] aquario = new int[dim_x][dim_y];
+        try {
+            System.out.println("Tamanho do aquario: (NxM)");
+            dim_x = sc.nextInt();
+            dim_y = sc.nextInt();
+            
+            System.out.println("Quantidade de peixes de tipo A:");
+            peixes_a = sc.nextInt();
+            //movimentar durante ra vezes seguidas
+            ra = sc.nextInt();
+            //não se movimentar durante ma vezes seguidas
+            ma = sc.nextInt();
+            
+            System.out.println("Quantidade de peixes de tipo B:");
+            peixes_b = sc.nextInt();
+            //comer rb peixes di tipo A
+            rb = sc.nextInt();
+            //não comer durante mb vezes peixe do tipo A
+            mb = sc.nextInt();
+
+            if(
+                dim_x < 0 || dim_y < 0 || 
+                peixes_a < 0 || peixes_b < 0 || 
+                ra < 0 || ma < 0 || 
+                rb < 0 || mb < 0
+            ) {
+                throw new NegativeValueException();
+            }
+        } catch(NegativeValueException e) {
+            System.out.println(e.getMessage());
+        }
+
+        Aquario aquario = new Aquario(dim_x, dim_y);
+        aquario.inicializar(peixes_a, peixes_b);
         
         int rodadas = 1;
         while(ativo)
         {
             System.out.println("------------------------Rodada " + rodadas + " -------------------------------");
-            printAquario(aquario, dim_x, dim_y);
+            aquario.printAquario();
             
             rodadas++;
+            
             
             ativo = verificaFim(peixes_b);
         }
