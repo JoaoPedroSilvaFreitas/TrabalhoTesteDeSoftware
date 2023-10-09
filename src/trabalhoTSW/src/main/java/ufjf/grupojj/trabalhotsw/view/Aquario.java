@@ -11,7 +11,7 @@ public class Aquario {
     Aquario(int dim_x, int dim_y) {
         this.dim_x = dim_x;
         this.dim_y = dim_y;
-        this.aquario = new char[dim_x][dim_x];
+        this.aquario = new char[dim_x][dim_y];
     }
 
     public int getDim_x() {
@@ -79,6 +79,58 @@ public class Aquario {
 
             aquario[x][y] = 'B';
         }
+    }
+
+    public void atualizaPosicao(char[][] tempAquario) {
+
+        for (int i = 0; i < dim_x; i++) {
+            for (int j = 0; j < dim_y; j++) {
+                
+                if (aquario[i][j] == 'A') {
+                    aquario[i][j] = ' ';
+                }
+                if (tempAquario[i][j] == 'A') {
+                    aquario[i][j] = 'A';
+                }
+
+            }
+        }
+    }
+
+    public void atualizarAquario() {
+
+        char[][] tempAquario = new char[dim_x][dim_y];
+
+        //regra 1 - peixe A
+        for (int i = 0; i < dim_x; i++) {
+            for (int j = 0; j < dim_y; j++) {
+                
+                if (aquario[i][j] == 'A') {
+                    //verifica na direita de A
+                    if (j+1 < dim_y && aquario[i][j+1] == ' ') {
+                        tempAquario[i][j+1] = 'A';
+                        aquario[i][j] = ' ';
+                    }
+                    //verifica em baixo de A
+                    else if (i+1 < dim_x && aquario[i+1][j] == ' ') {
+                        tempAquario[i+1][j] = 'A';
+                        aquario[i][j] = ' ';
+                    }
+                    //verifica esquerda de A
+                    else if (j-1 >= 0 && aquario[i][j-1] == ' ') {
+                        tempAquario[i][j-1] = 'A';
+                        aquario[i][j] = ' ';
+                    }
+                    //verifica em cima de A
+                    else if (i-1 >= 0 && aquario[i-1][j] == ' ') {
+                        tempAquario[i-1][j] = 'A';
+                        aquario[i][j] = ' ';
+                    }
+                }
+            }
+        }
+
+        atualizaPosicao(tempAquario);
     }
 }
 

@@ -63,31 +63,32 @@ public class main {
             System.out.println("Tamanho do aquario: (NxM)");
             dim_x = sc.nextInt();
             dim_y = sc.nextInt();
+
+            if(dim_x < 0 || dim_y < 0) {
+                throw new NegativeValueException();
+            }
             
             System.out.println("Quantidade de peixes de tipo A:");
             peixes_a = sc.nextInt();
-            //movimentar durante ra vezes seguidas
-            ra = sc.nextInt();
-            //não se movimentar durante ma vezes seguidas
+            ra = sc.nextInt();          
             ma = sc.nextInt();
+
+            if(peixes_a < 0 || ra < 0 || ma < 0) {
+                throw new NegativeValueException();
+            }
             
             System.out.println("Quantidade de peixes de tipo B:");
             peixes_b = sc.nextInt();
-            //comer rb peixes di tipo A
             rb = sc.nextInt();
-            //não comer durante mb vezes peixe do tipo A
             mb = sc.nextInt();
 
-            if(
-                dim_x < 0 || dim_y < 0 || 
-                peixes_a < 0 || peixes_b < 0 || 
-                ra < 0 || ma < 0 || 
-                rb < 0 || mb < 0
-            ) {
+            if(peixes_b < 0 || rb < 0 || mb < 0) {
                 throw new NegativeValueException();
             }
+
         } catch(NegativeValueException e) {
             System.out.println(e.getMessage());
+            System.exit(1);
         }
 
         Aquario aquario = new Aquario(dim_x, dim_y);
@@ -98,13 +99,15 @@ public class main {
         {
             System.out.println("------------------------Rodada " + rodadas + " -------------------------------");
             aquario.printAquario();
+
+            aquario.atualizarAquario();
+            aquario.printAquario();
             
             rodadas++;
             
             
             ativo = verificaFim(peixes_b);
         }
-        
         
         
     }
