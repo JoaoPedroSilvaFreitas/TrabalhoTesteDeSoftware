@@ -1,5 +1,6 @@
 package ufjf.grupojj.trabalhotsw.view;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Aquario {
@@ -7,11 +8,15 @@ public class Aquario {
     int dim_x;
     int dim_y;
     char[][] aquario;
+    ArrayList<Peixe> peixesA;
+    ArrayList<Peixe> peixesB;
 
     Aquario(int dim_x, int dim_y) {
         this.dim_x = dim_x;
         this.dim_y = dim_y;
         this.aquario = new char[dim_x][dim_y];
+        peixesA = new ArrayList<Peixe>();
+        peixesB = new ArrayList<Peixe>();
     }
 
     public int getDim_x() {
@@ -52,9 +57,10 @@ public class Aquario {
         System.out.println();
     }
     
-    public void inicializar(int peixes_a, int peixes_b) {
+    public void inicializar(int quantPeixes_a, int quantPeixes_b) {
         Random rand = new Random();
 
+        //colocando espaços vazio na matriz
         for(int i = 0; i < this.dim_x; i++) {
             for(int j = 0; j < this.dim_y; j++) {
                 aquario[i][j] = ' ';
@@ -62,14 +68,7 @@ public class Aquario {
         }
 
         //adicionar peixes A
-        for (int i = 0; i < peixes_a; i++) {
-            int x = rand.nextInt(this.dim_x);
-            int y = rand.nextInt(this.dim_y);
-            aquario[x][y] = 'A';
-        }
-
-        //adicionar peixes A
-        for (int i = 0; i < peixes_b; i++) {
+        for (int i = 0; i < quantPeixes_a; i++) {
             int x, y;
 
             do {
@@ -77,6 +76,22 @@ public class Aquario {
                 y = rand.nextInt(this.dim_y);
             } while (aquario[x][y] != ' ');
 
+            Peixe peixe = new Peixe('A', x, y);
+            peixesA.add(peixe);
+            aquario[x][y] = 'A';
+        }
+
+        //adicionar peixes B
+        for (int i = 0; i < quantPeixes_b; i++) {
+            int x, y;
+
+            do {
+                x = rand.nextInt(this.dim_x); 
+                y = rand.nextInt(this.dim_y);
+            } while (aquario[x][y] != ' ');
+
+            Peixe peixe = new Peixe('B', x, y);
+            peixesB.add(peixe);
             aquario[x][y] = 'B';
         }
     }
@@ -99,38 +114,38 @@ public class Aquario {
 
     public void atualizarAquario() {
 
-        char[][] tempAquario = new char[dim_x][dim_y];
+    //     char[][] tempAquario = new char[dim_x][dim_y];
 
-        //regra 1 - peixe A
-        for (int i = 0; i < dim_x; i++) {
-            for (int j = 0; j < dim_y; j++) {
+    //     //regra 1 - peixe A
+    //     for (int i = 0; i < dim_x; i++) {
+    //         for (int j = 0; j < dim_y; j++) {
                 
-                if (aquario[i][j] == 'A') {
-                    //verifica na direita de A
-                    if (j+1 < dim_y && aquario[i][j+1] == ' ') {
-                        tempAquario[i][j+1] = 'A';
-                        aquario[i][j] = ' ';
-                    }
-                    //verifica em baixo de A
-                    else if (i+1 < dim_x && aquario[i+1][j] == ' ') {
-                        tempAquario[i+1][j] = 'A';
-                        aquario[i][j] = ' ';
-                    }
-                    //verifica esquerda de A
-                    else if (j-1 >= 0 && aquario[i][j-1] == ' ') {
-                        tempAquario[i][j-1] = 'A';
-                        aquario[i][j] = ' ';
-                    }
-                    //verifica em cima de A
-                    else if (i-1 >= 0 && aquario[i-1][j] == ' ') {
-                        tempAquario[i-1][j] = 'A';
-                        aquario[i][j] = ' ';
-                    }
-                }
-            }
-        }
+    //             if (aquario[i][j] == 'A') {
+    //                 //verifica na direita de A
+    //                 if (j+1 < dim_y && aquario[i][j+1] == ' ') {
+    //                     tempAquario[i][j+1] = 'A';
+    //                     aquario[i][j] = ' ';
+    //                 }
+    //                 //verifica em baixo de A
+    //                 else if (i+1 < dim_x && aquario[i+1][j] == ' ') {
+    //                     tempAquario[i+1][j] = 'A';
+    //                     aquario[i][j] = ' ';
+    //                 }
+    //                 //verifica esquerda de A
+    //                 else if (j-1 >= 0 && aquario[i][j-1] == ' ') {
+    //                     tempAquario[i][j-1] = 'A';
+    //                     aquario[i][j] = ' ';
+    //                 }
+    //                 //verifica em cima de A
+    //                 else if (i-1 >= 0 && aquario[i-1][j] == ' ') {
+    //                     tempAquario[i-1][j] = 'A';
+    //                     aquario[i][j] = ' ';
+    //                 }
+    //             }
+    //         }
+    //     }
 
-        atualizaPosicao(tempAquario);
+    //     atualizaPosicao(tempAquario);
     }
 }
 
