@@ -15,7 +15,7 @@ public class Aquario {
     int mb;
     char[][] aquario;
     List<PeixeA> peixesA;
-    List<PeixeA> peixesB;
+    List<PeixeB> peixesB;
 
     Aquario(int dim_x, int dim_y, int ra, int rb, int ma, int mb) {
         this.dim_x = dim_x;
@@ -26,7 +26,7 @@ public class Aquario {
         this.mb = mb;
         this.aquario = new char[dim_x][dim_y];
         peixesA = new ArrayList<PeixeA>();
-        peixesB = new ArrayList<PeixeA>();
+        peixesB = new ArrayList<PeixeB>();
     }
 
     public int getDim_x() {
@@ -101,7 +101,7 @@ public class Aquario {
                 y = rand.nextInt(this.dim_y);
             } while (aquario[x][y] != ' ');
 
-            PeixeA peixe = new PeixeA('B', x, y);
+            PeixeB peixe = new PeixeB('B', x, y);
             peixesB.add(peixe);
             aquario[x][y] = 'B';
         }
@@ -176,9 +176,144 @@ public class Aquario {
                 }
                 printAquario();
             }
-            
+
+        }
+        movimentaB();  
+       }
+    
+    
+        public void atualizaPosMovimentoB(int x, int y, int i) 
+        {
+            //verificar se morreu de fome
+            if(peixesB.get(i).getMb() == this.mb)
+            {
+                aquario[x][y] = ' ';
+                peixesB.remove(i);
+                this.rb--;
+            }
+            //vericar se pode criar filho
+            if(peixesB.get(i).getRb() == this.rb)
+            {
+                PeixeB b;
+                if(x-1 > 0 && aquario[x-1][y] == ' ')
+                {
+                    b = new PeixeB('B',x-1,y);
+                    this.rb++;
+                }
+                else if(x+1 < dim_x && aquario[x+1][y] == ' ')
+                {
+                    b = new PeixeB('B',x+1,y);
+                    this.rb++;
+                }
+                else if(y+1 < dim_y && aquario[x][y+1] == ' ')
+                {
+                    b = new PeixeB('B',x,y+1);
+                    this.rb++;
+                }
+                else if(y-1 < 0 && aquario[x][y-1] == ' ')
+                {
+                    b = new PeixeB('B',x,y-1);
+                    this.rb++;
+                }
+            }
+        
+        }
+    
+        public void movimentaB()
+        {
+            for (int i = 0; i < peixesB.size(); i++) 
+            {
+                int x = peixesB.get(i).getPosicao_x();
+                int y = peixesB.get(i).getPosicao_y();
+
+                //Peixe A em cima de B
+                if(x-1 > 0 && aquario[x-1][y] == 'A')
+                {
+                    //come
+                    aquario[x-1][y] = 'B';
+                    aquario[x][y] = ' ';
+                    //aumenta rb
+                    peixesB.get(i).setRb(peixesB.get(i).getRb()+1);
+                    //reseta mb
+                    peixesB.get(i).setMb(0);
+                }
+                //Peixe A em baixo de B
+                else if(x+1 < dim_x && aquario[x+1][y] == 'A')
+                {
+                    //come
+                    aquario[x+1][y] = 'B';
+                    aquario[x][y] = ' ';
+                    //aumenta rb
+                    peixesB.get(i).setRb(peixesB.get(i).getRb()+1);
+                    //reseta mb
+                    peixesB.get(i).setMb(0);
+                }
+                //Peixe A a direita de B
+                else if(y+1 < dim_y && aquario[x][y+1] == 'A')
+                {
+                    //come
+                    aquario[x][y+1] = 'B';
+                    aquario[x][y] = ' ';
+                    //aumenta rb
+                    peixesB.get(i).setRb(peixesB.get(i).getRb()+1);
+                    //reseta mb
+                    peixesB.get(i).setMb(0);
+                }
+                //Peixe A a esquerda de B
+                else if(y-1 < 0 && aquario[x][y-1] == 'A')
+                {
+                    //come
+                    aquario[x][y-1] = 'B';
+                    aquario[x][y] = ' ';
+                    //aumenta rb
+                    peixesB.get(i).setRb(peixesB.get(i).getRb()+1);
+                    //reseta mb
+                    peixesB.get(i).setMb(0);
+                    
+                }else{
+                    
+                    //Vazio em cima de B
+                    if(x-1 > 0 && aquario[x-1][y] == ' ')
+                    {
+                        //movimenta
+                        aquario[x-1][y] = 'B';
+                        aquario[x][y] = ' ';
+                        //aumenta mb
+                        peixesB.get(i).setMb(peixesB.get(i).getMb()+1);
+                    }
+                    //Vazio em baixo de B
+                    else if(x+1 < dim_x && aquario[x+1][y] == ' ')
+                    {
+                        //movimenta
+                        aquario[x+1][y] = 'B';
+                        aquario[x][y] = ' ';
+                        //aumenta mb
+                        peixesB.get(i).setMb(peixesB.get(i).getMb()+1);
+                    }
+                    //Vazio a direita de B
+                    else if(y+1 < dim_y && aquario[x][y+1] == ' ') 
+                    {
+                        //movimenta
+                        aquario[x][y+1] = 'B';
+                        aquario[x][y] = ' ';
+                        //aumenta mb
+                        peixesB.get(i).setMb(peixesB.get(i).getMb()+1);
+                    }
+                    //Vazio a esquerda de B
+                    else if(y-1 > 0 && aquario[x][y-1] == ' ')
+                    {
+                        //movimenta
+                        aquario[x][y-1] = 'B';
+                        aquario[x][y] = ' ';
+                        //aumenta mb
+                        peixesB.get(i).setMb(peixesB.get(i).getMb()+1);
+                    }
+            }
         }
     }
 
+    
+    
+    
 }
 

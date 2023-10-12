@@ -6,10 +6,6 @@ package ufjf.grupojj.trabalhotsw.view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/**
- *
- * @author joaop
- */
 public class main {
     
     //Verifica se o jogo acabou
