@@ -1,22 +1,32 @@
 package ufjf.grupojj.trabalhotsw.view;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import java.util.Random;
 
 public class Aquario {
     
     int dim_x;
     int dim_y;
+    int ra;
+    int rb;
+    int ma;
+    int mb;
     char[][] aquario;
-    ArrayList<Peixe> peixesA;
-    ArrayList<Peixe> peixesB;
+    List<PeixeA> peixesA;
+    List<PeixeA> peixesB;
 
-    Aquario(int dim_x, int dim_y) {
+    Aquario(int dim_x, int dim_y, int ra, int rb, int ma, int mb) {
         this.dim_x = dim_x;
         this.dim_y = dim_y;
+        this.ra = ra;
+        this.rb = rb;
+        this.ma = ma;
+        this.mb = mb;
         this.aquario = new char[dim_x][dim_y];
-        peixesA = new ArrayList<Peixe>();
-        peixesB = new ArrayList<Peixe>();
+        peixesA = new ArrayList<PeixeA>();
+        peixesB = new ArrayList<PeixeA>();
     }
 
     public int getDim_x() {
@@ -76,9 +86,10 @@ public class Aquario {
                 y = rand.nextInt(this.dim_y);
             } while (aquario[x][y] != ' ');
 
-            Peixe peixe = new Peixe('A', x, y);
+            PeixeA peixe = new PeixeA('A', x, y);
             peixesA.add(peixe);
             aquario[x][y] = 'A';
+            System.out.println("Peixe" + i + " " + x + "-" + y);
         }
 
         //adicionar peixes B
@@ -90,62 +101,84 @@ public class Aquario {
                 y = rand.nextInt(this.dim_y);
             } while (aquario[x][y] != ' ');
 
-            Peixe peixe = new Peixe('B', x, y);
+            PeixeA peixe = new PeixeA('B', x, y);
             peixesB.add(peixe);
             aquario[x][y] = 'B';
         }
     }
 
-    public void atualizaPosicao(char[][] tempAquario) {
+    public void atualizaPosMovimento(int x, int y, int i) {
+        //reinicia a contagem de ma, porque o peixe se movimentou.
+        peixesA.get(i).setMa(0);
+        //atualiza valor de ra.
+        int aux_ra = peixesA.get(i).getRa() + 1;
+        peixesA.get(i).setRa(aux_ra);
 
-        for (int i = 0; i < dim_x; i++) {
-            for (int j = 0; j < dim_y; j++) {
-                
-                if (aquario[i][j] == 'A') {
-                    aquario[i][j] = ' ';
-                }
-                if (tempAquario[i][j] == 'A') {
-                    aquario[i][j] = 'A';
-                }
-
-            }
+        if (aux_ra == this.ra) {
+            //da posição que A saiu anteriormente, seu filho ocupa esse lugar.
+            aquario[x][y] = 'A';
         }
     }
 
     public void atualizarAquario() {
 
-    //     char[][] tempAquario = new char[dim_x][dim_y];
+        for (int i = 0; i < peixesA.size(); i++) {
+            int x = peixesA.get(i).getPosicao_x();
+            int y = peixesA.get(i).getPosicao_y();
 
-    //     //regra 1 - peixe A
-    //     for (int i = 0; i < dim_x; i++) {
-    //         for (int j = 0; j < dim_y; j++) {
-                
-    //             if (aquario[i][j] == 'A') {
-    //                 //verifica na direita de A
-    //                 if (j+1 < dim_y && aquario[i][j+1] == ' ') {
-    //                     tempAquario[i][j+1] = 'A';
-    //                     aquario[i][j] = ' ';
-    //                 }
-    //                 //verifica em baixo de A
-    //                 else if (i+1 < dim_x && aquario[i+1][j] == ' ') {
-    //                     tempAquario[i+1][j] = 'A';
-    //                     aquario[i][j] = ' ';
-    //                 }
-    //                 //verifica esquerda de A
-    //                 else if (j-1 >= 0 && aquario[i][j-1] == ' ') {
-    //                     tempAquario[i][j-1] = 'A';
-    //                     aquario[i][j] = ' ';
-    //                 }
-    //                 //verifica em cima de A
-    //                 else if (i-1 >= 0 && aquario[i-1][j] == ' ') {
-    //                     tempAquario[i-1][j] = 'A';
-    //                     aquario[i][j] = ' ';
-    //                 }
-    //             }
-    //         }
-    //     }
-
-    //     atualizaPosicao(tempAquario);
+            //se peixe A tiver alguma célula vizinha vazia, se movimenta
+            if (x-1 >= 0 && aquario[x-1][y] == ' ') {
+                peixesA.get(i).setPosicao_x(x-1);
+                aquario[x-1][y] = 'A';
+                aquario[x][y] = ' ';
+                //reinicia a contagem de ma, porque o peixe se movimentou.
+                atualizaPosMovimento(x, y, i);
+                System.out.println(x + " " + y + " para " + (x-1) + " " + y );
+                printAquario();
+            } 
+            else if (y-1 >= 0 && aquario[x][y-1] == ' ') {
+                peixesA.get(i).setPosicao_y(y-1);
+                aquario[x][y-1] = 'A';
+                aquario[x][y] = ' ';
+                atualizaPosMovimento(x, y, i);
+                System.out.println(x + " " + y + " para " + x + " " + (y-1) );
+                printAquario();
+            }
+            else if (x+1 < dim_x && aquario[x+1][y] == ' ') {
+                peixesA.get(i).setPosicao_x(x+1);
+                aquario[x+1][y] = 'A';
+                aquario[x][y] = ' ';
+                atualizaPosMovimento(x, y, i);
+                System.out.println(x + " " + y + " para " + (x+1) + " " + y );
+                printAquario();
+            }
+            else if (y+1 < dim_y && aquario[x][y+1] == ' ') {
+                peixesA.get(i).setPosicao_y(y+1);
+                aquario[x][y+1] = 'A';
+                aquario[x][y] = ' ';
+                atualizaPosMovimento(x, y, i);
+                System.out.println(x + " " + y + " para " + x + " " + (y+1) );
+                printAquario();
+            } 
+            //senão, atualiza valor de ma (não se movimenta, todas as células ao seu redor estão ocupadas)
+            else {
+                int aux_ma = peixesA.get(i).getMa() + 1;
+                peixesA.get(i).setMa(aux_ma);
+                //se ma atingir valor máximo, peixe morre.
+                if (aux_ma == ma) {
+                    peixesA.remove(i);
+                    i--;
+                    aquario[x][y] = ' ';
+                } 
+                //senão apenas reinicia o valor de ra.
+                else {
+                    peixesA.get(i).setRa(0);
+                }
+                printAquario();
+            }
+            
+        }
     }
+
 }
 

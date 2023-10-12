@@ -91,7 +91,7 @@ public class main {
             System.exit(1);
         }
 
-        Aquario aquario = new Aquario(dim_x, dim_y);
+        Aquario aquario = new Aquario(dim_x, dim_y, ra, rb, ma, mb);
         aquario.inicializar(peixes_a, peixes_b);
         
         int rodadas = 1;
