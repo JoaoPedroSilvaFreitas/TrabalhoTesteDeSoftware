@@ -11,8 +11,8 @@ public class PeixeB {
     //número de vezes sem comer nenhum peixe.
     int mb;
 
-    public PeixeB() {
-        this.id = ' ';
+    public PeixeB(char id) {
+        this.id = id;
     }
 
     public PeixeB(char id, int posicao_x, int posicao_y) {
