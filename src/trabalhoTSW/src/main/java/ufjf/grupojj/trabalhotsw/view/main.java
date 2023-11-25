@@ -6,8 +6,43 @@ package ufjf.grupojj.trabalhotsw.view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main {
+public class main {
     
+	
+	//função de teste
+	public static void iniciaJogo(int dim_x, int dim_y, int pa,int ra,int ma,int pb,int rb,int mb)
+	{
+
+        try {
+
+            if(dim_x < 0 || dim_y < 0) {
+                throw new NegativeValueException();
+            }else if(dim_x == 0 || dim_y == 0)
+            {
+            	System.out.println("[ERRO] Dimensão de matriz inválida!");
+            	return;
+            }
+            
+            if(pa < 0 || ra < 0 || ma < 0) {
+                throw new NegativeValueException();
+            }
+            
+
+            if(pa < 0 || rb < 0 || mb < 0) {
+                throw new NegativeValueException();
+            }
+
+        } catch(NegativeValueException e) {
+            System.out.println(e.getMessage());
+            System.exit(1);
+        }
+
+        Aquario aquario = new Aquario(dim_x, dim_y, ra, rb, ma, mb);
+        aquario.inicializar(pa, pb);
+        
+	}
+	
+	
     //Verifica se o jogo acabou
     public static boolean verificaFim(int peixes_b)
     {
@@ -62,6 +97,10 @@ public class Main {
 
             if(dim_x < 0 || dim_y < 0) {
                 extracted();
+            }else if(dim_x == 0 || dim_y == 0)
+            {
+            	System.out.println("[ERRO] Dimensão de matriz inválida!");
+            	System.exit(1);
             }
             
             System.out.println("Quantidade de peixes de tipo A:");
