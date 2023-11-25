@@ -58,6 +58,12 @@ public class main {
             System.out.println(e.getMessage());
             return;
         }
+        
+        if(pa+pb > dim_x*dim_y)
+        {
+        	System.out.println("[ERRO] Quantidade de peixe não cabe no aquário!");
+        	return;
+        }
 
         Aquario aquario = new Aquario(dim_x, dim_y, ra, rb, ma, mb);
         jogoAtivo(aquario,pa,pb);

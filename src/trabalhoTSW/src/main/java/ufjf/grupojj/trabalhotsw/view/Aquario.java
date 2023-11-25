@@ -285,28 +285,31 @@ public class Aquario {
 		if (peixesB.get(i).getMb() == this.mb) {
 			aquario[x][y] = ' ';
 			peixesB.remove(i);
-		}
-		// verificar se pode criar filho
-		if (peixesB.get(i).getRb() == this.rb) {
-			PeixeB b = new PeixeB('B');
-
-			// nao pode ter nenhum outro b ao seu lado
-			if (x - 1 >= 0 && aquario[x - 1][y] != 'B' && aquario[x - 1][y] == ' ') {
-				b.setPosicao_x(x - 1);
-				b.setPosicao_y(y);
-			} else if (x + 1 < dim_x && aquario[x + 1][y] != 'B' && aquario[x + 1][y] == ' ') {
-				b.setPosicao_x(x + 1);
-				b.setPosicao_y(y);
-			} else if (y - 1 >= 0 && aquario[x][y - 1] != 'B' && aquario[x][y - 1] == ' ') {
-				b.setPosicao_x(x);
-				b.setPosicao_y(y - 1);
-			} else if (y + 1 < dim_y && aquario[x][y + 1] != 'B' && aquario[x][y + 1] == ' ') {
-				b.setPosicao_x(x);
-				b.setPosicao_y(y + 1);
+		}else if (peixesB.get(i).getRb() == this.rb) {
+			
+			// verificar se pode criar filho
+			if (peixesB.get(i).getRb() == this.rb) {
+				PeixeB b = new PeixeB('B');
+	
+				// nao pode ter nenhum outro b ao seu lado
+				if (x - 1 >= 0 && aquario[x - 1][y] != 'B' && aquario[x - 1][y] == ' ') {
+					b.setPosicao_x(x - 1);
+					b.setPosicao_y(y);
+				} else if (x + 1 < dim_x && aquario[x + 1][y] != 'B' && aquario[x + 1][y] == ' ') {
+					b.setPosicao_x(x + 1);
+					b.setPosicao_y(y);
+				} else if (y - 1 >= 0 && aquario[x][y - 1] != 'B' && aquario[x][y - 1] == ' ') {
+					b.setPosicao_x(x);
+					b.setPosicao_y(y - 1);
+				} else if (y + 1 < dim_y && aquario[x][y + 1] != 'B' && aquario[x][y + 1] == ' ') {
+					b.setPosicao_x(x);
+					b.setPosicao_y(y + 1);
+				}
+	
+				// adiciona peixe a lista de peixes do tipo B
+				peixesB.add(b);
 			}
-
-			// adiciona peixe a lista de peixes do tipo B
-			peixesB.add(b);
+		
 		}
 	}
 

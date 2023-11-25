@@ -46,4 +46,56 @@ public class AquarioTest {
 		main.iniciaJogo(1,1,-1,0,var,var,var,var);
 	}
 	
+
+	@Test
+	void testeFuncional6(){
+		System.out.println("Teste 6");
+		int var = 0;
+		main.iniciaJogo(1,1,0,-1,var,var,var,var);
+	}
+	
+	@Test
+	void testeFuncional7(){
+		System.out.println("Teste 7");
+		int var = 0;
+		main.iniciaJogo(1,1,1,1,var,var,var,var);
+	}
+	
+	
+	@Test
+	void testeFuncional8(){
+		System.out.println("Teste 8");
+		int var = 0;
+		main.iniciaJogo(1, 2, 1, 1, -1, 0,var,var);
+	}
+	
+	
+	@Test
+	void testeFuncional9(){
+		System.out.println("Teste 9");
+		int var = 0;
+		main.iniciaJogo(1, 2, 1, 1, 0, -1,var,var);
+	}
+	
+	
+	@Test
+	void testeFuncional10(){
+		System.out.println("Teste 10");
+		int var = 0;
+		main.iniciaJogo(2, 1, 1, 1, 1, 1, -1, 0);
+	}
+	
+	@Test
+	void testeFuncional11(){
+		System.out.println("Teste 11");
+		int var = 0;
+		main.iniciaJogo(2, 1, 1, 1, 1, 1, 0, -1);
+	}
+	
+	@Test
+	void testeFuncional12(){
+		System.out.println("Teste 12");
+		int var = 0;
+		main.iniciaJogo(2, 1, 1, 1, 1, 1, 1, 1);
+	}
 }
