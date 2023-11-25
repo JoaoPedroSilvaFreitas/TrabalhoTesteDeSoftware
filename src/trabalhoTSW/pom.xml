@@ -17,7 +17,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ufjf.grupojj.trabalhotsw.view.main</mainClass>
+                            <mainClass>ufjf.grupojj.trabalhotsw.view.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
