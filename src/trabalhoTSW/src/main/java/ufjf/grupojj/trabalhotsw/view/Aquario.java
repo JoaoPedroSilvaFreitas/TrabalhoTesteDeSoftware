@@ -17,7 +17,33 @@ public class Aquario {
 	List<PeixeA> peixesA;
 	List<PeixeB> peixesB;
 
-	Aquario(int dim_x, int dim_y, int ra, int rb, int ma, int mb) {
+	public Aquario(int dim_x, int dim_y, int ra, int rb, int ma, int mb) {
+		
+		
+		try {
+
+            if(dim_x < 0 || dim_y < 0) {
+                throw new NegativeValueException();
+            }else if(dim_x == 0 || dim_y == 0)
+            {
+            	System.out.println("[ERRO] Dimensão de matriz inválida!");
+            	return;
+            }
+            
+            if(ra < 0 || ma < 0) {
+                throw new NegativeValueException();
+            }
+            
+
+            if(rb < 0 || mb < 0) {
+                throw new NegativeValueException();
+            }
+
+        } catch(NegativeValueException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
 		this.dim_x = dim_x;
 		this.dim_y = dim_y;
 		this.ra = ra;

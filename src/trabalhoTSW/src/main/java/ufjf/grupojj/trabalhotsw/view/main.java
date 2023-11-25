@@ -9,8 +9,30 @@ import java.util.Scanner;
 public class main {
     
 	
+	
 	//função de teste
-	public static void iniciaJogo(int dim_x, int dim_y, int pa,int ra,int ma,int pb,int rb,int mb)
+	public static void jogoAtivo(Aquario aquario, int pa, int pb)
+	{
+		
+		aquario.inicializar(pa, pb);
+		boolean ativo = true; 
+		int rodada = 1;
+        while(ativo)
+        {
+            System.out.println("\n------------------------ Rodada " + rodada + " -------------------------------");
+            
+            aquario.atualizarAquario();
+            aquario.printAquario();
+            
+            ativo = verificaFim(pb);
+            
+            rodada++;
+        }
+        
+	}
+	
+	//função de teste
+	public static void iniciaJogo(int dim_x, int dim_y, int pa, int pb,int ra,int rb,int ma,int mb)
 	{
 
         try {
@@ -28,17 +50,17 @@ public class main {
             }
             
 
-            if(pa < 0 || rb < 0 || mb < 0) {
+            if(pb < 0 || rb < 0 || mb < 0) {
                 throw new NegativeValueException();
             }
 
         } catch(NegativeValueException e) {
             System.out.println(e.getMessage());
-            System.exit(1);
+            return;
         }
 
         Aquario aquario = new Aquario(dim_x, dim_y, ra, rb, ma, mb);
-        aquario.inicializar(pa, pb);
+        jogoAtivo(aquario,pa,pb);
         
 	}
 	
