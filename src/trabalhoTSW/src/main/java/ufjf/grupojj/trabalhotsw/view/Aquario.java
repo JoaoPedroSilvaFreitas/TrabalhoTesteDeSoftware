@@ -112,7 +112,6 @@ public class Aquario {
 			PeixeA peixe = new PeixeA('A', x, y);
 			peixesA.add(peixe);
 			aquario[x][y] = 'A';
-			// System.out.println("Peixe" + i + " " + x + "-" + y);
 		}
 
 		// adicionar peixes B
@@ -143,7 +142,6 @@ public class Aquario {
 			x = peixesB.get(i).getPosicao_x();
 			y = peixesB.get(i).getPosicao_y();
 			movimentaB(x, y, i);
-			atualizaPosMovimentoB(x, y, i);
 		}
 	}
 
@@ -156,29 +154,21 @@ public class Aquario {
 			aquario[x][y] = ' ';
 			// reinicia a contagem de ma, porque o peixe se movimentou.
 			atualizaPosMovimentoA(x, y, i);
-			// System.out.println(x + " " + y + " para " + (x - 1) + " " + y);
-			// printAquario();
 		} else if (y - 1 >= 0 && aquario[x][y - 1] == ' ') {
 			peixesA.get(i).setPosicao_y(y - 1);
 			aquario[x][y - 1] = 'A';
 			aquario[x][y] = ' ';
 			atualizaPosMovimentoA(x, y, i);
-			// System.out.println(x + " " + y + " para " + x + " " + (y - 1));
-			// printAquario();
 		} else if (x + 1 < dim_x && aquario[x + 1][y] == ' ') {
 			peixesA.get(i).setPosicao_x(x + 1);
 			aquario[x + 1][y] = 'A';
 			aquario[x][y] = ' ';
 			atualizaPosMovimentoA(x, y, i);
-			// System.out.println(x + " " + y + " para " + (x + 1) + " " + y);
-			// printAquario();
 		} else if (y + 1 < dim_y && aquario[x][y + 1] == ' ') {
 			peixesA.get(i).setPosicao_y(y + 1);
 			aquario[x][y + 1] = 'A';
 			aquario[x][y] = ' ';
 			atualizaPosMovimentoA(x, y, i);
-			// System.out.println(x + " " + y + " para " + x + " " + (y + 1));
-			// printAquario();
 		}
 		// senão, atualiza valor de ma (não se movimenta, todas as células ao seu redor
 		// estão ocupadas)
@@ -188,14 +178,12 @@ public class Aquario {
 			// se ma atingir valor máximo, peixe morre.
 			if (aux_ma == ma) {
 				peixesA.remove(i);
-				i--;
 				aquario[x][y] = ' ';
 			}
 			// senão apenas reinicia o valor de ra.
 			else {
 				peixesA.get(i).setRa(0);
 			}
-			// printAquario();
 		}
 
 	}
@@ -278,6 +266,7 @@ public class Aquario {
 				peixesB.get(i).setMb(peixesB.get(i).getMb() + 1);
 			}
 		}
+		atualizaPosMovimentoB(x, y, i);
 	}
 
 	public void atualizaPosMovimentoB(int x, int y, int i) {
@@ -290,26 +279,67 @@ public class Aquario {
 			// verificar se pode criar filho
 			if (peixesB.get(i).getRb() == this.rb) {
 				PeixeB b = new PeixeB('B');
-	
-				// nao pode ter nenhum outro b ao seu lado
-				if (x - 1 >= 0 && aquario[x - 1][y] != 'B' && aquario[x - 1][y] == ' ') {
-					b.setPosicao_x(x - 1);
-					b.setPosicao_y(y);
-				} else if (x + 1 < dim_x && aquario[x + 1][y] != 'B' && aquario[x + 1][y] == ' ') {
-					b.setPosicao_x(x + 1);
-					b.setPosicao_y(y);
-				} else if (y - 1 >= 0 && aquario[x][y - 1] != 'B' && aquario[x][y - 1] == ' ') {
-					b.setPosicao_x(x);
-					b.setPosicao_y(y - 1);
-				} else if (y + 1 < dim_y && aquario[x][y + 1] != 'B' && aquario[x][y + 1] == ' ') {
-					b.setPosicao_x(x);
-					b.setPosicao_y(y + 1);
+				
+				if (x > 0 && x < dim_x && y > 0 && y < dim_y) {
+					
+					if (aquario[x - 1][y] != 'B' && aquario[x + 1][y] != 'B' &&
+						aquario[x][y - 1] != 'B' && aquario[x][y + 1] != 'B') {
+						
+						b.setPosicao_x(x - 1);
+						b.setPosicao_y(y);
+						peixesB.add(b);
+					}
+					
+				} else {
+					if (x == 0 && y == 0 && (aquario[x+1][y] != 'B' && aquario[x][y+1] != 'B')) {
+						if (aquario[x+1][y] == ' ') {
+							b.setPosicao_x(x + 1);
+							b.setPosicao_y(y);
+						} else {
+							b.setPosicao_x(x);
+							b.setPosicao_y(y+1);
+						}
+						peixesB.add(b);
+					}
+					
+					else if (x == dim_x - 1 && y == 0 && (aquario[x-1][y] != 'B' && aquario[x][y+1] != 'B')) {
+						if (aquario[x-1][y] == ' ') {
+							b.setPosicao_x(x-1);
+							b.setPosicao_y(y);
+						} else {
+							b.setPosicao_x(x);
+							b.setPosicao_y(y+1);
+						}
+						peixesB.add(b);
+					}
+					
+					else if (x == dim_x - 1 && y == dim_y - 1 && (aquario[x-1][y] != 'B' && aquario[x][y-1] != 'B')) {
+						if (aquario[x-1][y] == ' ') {
+							b.setPosicao_x(x-1);
+							b.setPosicao_y(y);
+						} else {
+							b.setPosicao_x(x);
+							b.setPosicao_y(y-1);
+						}
+						peixesB.add(b);
+					}
+					
+					else if (x == 0 && y == dim_y - 1 && (aquario[x+1][y] != 'B' && aquario[x][y-1] != 'B')) {
+						if (aquario[x+1][y] == ' ') {
+							b.setPosicao_x(x+1);
+							b.setPosicao_y(y);
+						} else {
+							b.setPosicao_x(x);
+							b.setPosicao_y(y-1);
+						}
+						peixesB.add(b);
+					}
+					
 				}
-	
+				
 				// adiciona peixe a lista de peixes do tipo B
-				peixesB.add(b);
+				
 			}
-		
 		}
 	}
 
@@ -326,7 +356,7 @@ public class Aquario {
 			peixeFilho.setRa(0);
 			peixeFilho.setMa(0);
 			peixesA.add(peixeFilho);
-			// aquario[x][y] = 'A';
+			aquario[x][y] = 'A';
 		}
 	}
 }

@@ -98,4 +98,38 @@ public class AquarioTest {
 		int var = 0;
 		main.iniciaJogo(2, 2, 1, 1, 1, 1, 1, 1);
 	}
+	
+	// ---------------------------------------------------------------
+	
+	@Test
+	void testeCobertura01() {
+		Aquario aquario = new Aquario(10, 10, 3, 3, 3, 3);
+		aquario.inicializar(50, 50);
+		aquario.atualizarAquario();
+	}
+
+	@Test
+	void testeCobertura02() {
+		Aquario aquario = new Aquario(9, 9, 3, 3, 3, 3);
+		aquario.inicializar(0, 10);
+		aquario.movimentaB(0, 0, 0);
+		aquario.movimentaB(0, 8, 1);
+		aquario.movimentaB(8, 8, 2);
+		aquario.movimentaB(8, 0, 3);
+		aquario.movimentaB(5, 5, 4);
+		aquario.movimentaB(1, 8, 5);
+		aquario.movimentaB(2, 8, 6);
+		aquario.movimentaB(3, 8, 7);
+		aquario.movimentaB(4, 8, 8);
+}
+	
+	@Test
+	void testeCobertura03() {
+		Aquario aquario = new Aquario(10, 10, 3, 3, 3, 3);
+		aquario.inicializar(50, 1);
+		aquario.atualizarAquario();
+	}
+	
+
+	
 }
