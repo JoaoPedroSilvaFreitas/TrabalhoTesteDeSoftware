@@ -10,7 +10,7 @@ public class main {
     
 	
 	
-	//função de teste
+	//função auxiliar para teste
 	public static void jogoAtivo(Aquario aquario, int pa, int pb)
 	{
 		
@@ -31,7 +31,7 @@ public class main {
         
 	}
 	
-	//função de teste
+	//função auxiliar para  teste
 	public static void iniciaJogo(int dim_x, int dim_y, int pa, int pb,int ra,int rb,int ma,int mb)
 	{
 
@@ -71,35 +71,25 @@ public class main {
 	}
 	
 	
-    //Verifica se o jogo acabou
-    public static boolean verificaFim(int peixes_b)
-    {
-        if(peixes_b <= 0)
-        {
-            return false;
-        }
-        
-        Scanner sc = new Scanner(System.in);
-        
-        do {
-            try {
-                System.out.println();
-                System.out.println("Deseja finalizar o jogo?");
-                System.out.println("1 - sim");
-                
-                int op = sc.nextInt();
-                
-                if(op == 1)
-                {
-                    return false;  
-                }else 
-                    return true;
-                
-            } catch (InputMismatchException e) {
-                System.out.println("Valor inválido!");
-            }
-        } while(true);
-    }
+	/*1*/    public static boolean verificaFim(int peixes_b) {
+	/*1*/        if(peixes_b <= 0) {
+	/*2*/            return false;
+	/*3*/        }        
+	/*3*/        Scanner sc = new Scanner(System.in);	        
+	/*3*/            try {
+	/*4*/                System.out.println();
+	/*4*/                System.out.println("Deseja finalizar o jogo?");
+	/*4*/                System.out.println("1 - sim");	                
+	/*4*/                int op = sc.nextInt();                
+	/*4*/                if(op == 1) {
+	/*5*/                    return false;  
+	/*6*/                }else 
+	/*6*/                    return true;	                
+	/*7*/            } catch (InputMismatchException e) {
+	/*7*/                System.out.println("Valor inválido!");
+	/*7*/            }
+	/*8*/			return true;
+	/*9*/    }
     
     public static void main(String[] args) {
         
