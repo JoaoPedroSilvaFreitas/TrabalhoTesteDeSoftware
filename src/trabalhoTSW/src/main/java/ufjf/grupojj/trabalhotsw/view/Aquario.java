@@ -84,28 +84,28 @@ public class Aquario {
 /*4*/			}
 /*5*/		}
 /*5*/		// adicionar peixes A
-/*6*/		for (int i = 0; i < quantPeixes_a; i++) {
-/*7*/			int x, y;
-/*8*/			do {
-/*8*/				x = rand.nextInt(this.dim_x);
-/*8*/				y = rand.nextInt(this.dim_y);
-/*9*/			} while (aquario[x][y] != ' ');
-/*10*/			PeixeA peixe = new PeixeA('A', x, y);
-/*10*/			peixesA.add(peixe);
-/*10*/			aquario[x][y] = 'A';
-/*11*/		}
-/*12*/		// adicionar peixes B
-/*12*/		for (int i = 0; i < quantPeixes_b; i++) {
-/*13*/			int x, y;
-/*14*/			do {
-/*14*/				x = rand.nextInt(this.dim_x);
-/*14*/				y = rand.nextInt(this.dim_y);
-/*15*/			} while (aquario[x][y] != ' ');
-/*16*/			PeixeB peixe = new PeixeB('B', x, y);
-/*16*/			peixesB.add(peixe);
-/*16*/			aquario[x][y] = 'B';
-/*17*/		}
-/*17*/	}
+/*5*/		for (int i = 0; i < quantPeixes_a; i++) {
+/*6*/			int x, y;
+/*6*/			do {
+/*6*/				x = rand.nextInt(this.dim_x);
+/*6*/				y = rand.nextInt(this.dim_y);
+/*7*/			} while (aquario[x][y] != ' ');
+/*8*/			PeixeA peixe = new PeixeA('A', x, y);
+/*8*/			peixesA.add(peixe);
+/*8*/			aquario[x][y] = 'A';
+/*9*/		}
+			// adicionar peixes B
+/*9*/		for (int i = 0; i < quantPeixes_b; i++) {
+/*10*/			int x, y;
+/*10*/			do {
+/*10*/				x = rand.nextInt(this.dim_x);
+/*10*/				y = rand.nextInt(this.dim_y);
+/*11*/			} while (aquario[x][y] != ' ');
+/*12*/			PeixeB peixe = new PeixeB('B', x, y);
+/*12*/			peixesB.add(peixe);
+/*12*/			aquario[x][y] = 'B';
+/*13*/		}
+/*14*/	}
 
 	public void atualizarAquario() {
 		int x, y;
