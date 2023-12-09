@@ -1,8 +1,10 @@
 package ufjf.grupojj.trabalhotsw.test;
 
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 
 import ufjf.grupojj.trabalhotsw.view.Aquario;
+
+import org.junit.Test;
 
 class AquarioTestGrafoDefUso {
 
@@ -120,7 +122,7 @@ class AquarioTestGrafoDefUso {
 // Todas difinicoes
 	
 	@Test
-	void testDef_movA1_peixesA() {
+	public void testDef_movA1_peixesA() {
 		Aquario aquario = new Aquario(2, 2, 0, 0, 1, 1);
 		aquario.inicializar(1, 0);
 	
@@ -136,7 +138,7 @@ class AquarioTestGrafoDefUso {
 	}
 	
 	@Test
-	void testDef_movA2_peixesA() {
+	public void testDef_movA2_peixesA() {
 		Aquario aquario = new Aquario(2, 2, 0, 0, 1, 1);
 		aquario.inicializar(1, 0);
 	
@@ -152,7 +154,7 @@ class AquarioTestGrafoDefUso {
 	}
 	
 	@Test
-	void testDef_movA3_peixesA() {
+	public void testDef_movA3_peixesA() {
 		Aquario aquario = new Aquario(2, 2, 0, 0, 1, 1);
 		aquario.inicializar(1, 0);
 	
@@ -168,7 +170,7 @@ class AquarioTestGrafoDefUso {
 	}
 	
 	@Test
-	void testDef_movA4_peixesA() {
+	public void testDef_movA4_peixesA() {
 		Aquario aquario = new Aquario(2, 2, 0, 0, 1, 1);
 		aquario.inicializar(1, 0);
 	
@@ -184,7 +186,7 @@ class AquarioTestGrafoDefUso {
 	}
 	
 	@Test
-	void testDef_movA5_peixesA() {
+	public void testDef_movA5_peixesA() {
 		Aquario aquario = new Aquario(2, 2, 0, 0, 1, 1);
 		aquario.inicializar(1, 0);
 		
@@ -200,7 +202,7 @@ class AquarioTestGrafoDefUso {
 	}
 	
 	@Test
-	void testDef_movA6_peixesA() {
+	public void testDef_movA6_peixesA() {
 		Aquario aquario = new Aquario(2, 2, 0, 0, 2, 1);
 		aquario.inicializar(1, 0);
 		

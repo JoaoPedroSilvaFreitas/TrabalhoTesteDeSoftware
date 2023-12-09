@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="trabalhoTSW">
+    <baduino>C:\Users\joaop\Desktop\Trabalho TSW\TrabalhoTesteDeSoftware\src\trabalhoTSW\.baduino</baduino>
+    <classes>
+        <class>ufjf.grupojj.trabalhotsw.test.AquarioTest</class>
+        <class>ufjf.grupojj.trabalhotsw.test.AquarioTesteEstruturalFluxoDados</class>
+        <class>ufjf.grupojj.trabalhotsw.test.AquarioTestGrafo</class>
+        <class>ufjf.grupojj.trabalhotsw.test.AquarioTestGrafoDefUso</class>
+        <class>ufjf.grupojj.trabalhotsw.view.Aquario</class>
+        <class>ufjf.grupojj.trabalhotsw.view.main</class>
+        <class>ufjf.grupojj.trabalhotsw.view.NegativeValueException</class>
+        <class>ufjf.grupojj.trabalhotsw.view.PeixeA</class>
+        <class>ufjf.grupojj.trabalhotsw.view.PeixeB</class>
+    </classes>
+    <classes-path>C:\Users\joaop\Desktop\Trabalho TSW\TrabalhoTesteDeSoftware\src\trabalhoTSW\target\classes</classes-path>
+    <coverage-bin>C:\Users\joaop\Desktop\Trabalho TSW\TrabalhoTesteDeSoftware\src\trabalhoTSW\.baduino\coverage.ser</coverage-bin>
+    <coverage-xml>C:\Users\joaop\Desktop\Trabalho TSW\TrabalhoTesteDeSoftware\src\trabalhoTSW\.baduino\coverage.xml</coverage-xml>
+    <location>C:\Users\joaop\Desktop\Trabalho TSW\TrabalhoTesteDeSoftware\src\trabalhoTSW</location>
+    <path>C:\Users\joaop\Desktop\Trabalho TSW\TrabalhoTesteDeSoftware\src\trabalhoTSW\.baduino\trabalhoTSW.xml</path>
+</model>

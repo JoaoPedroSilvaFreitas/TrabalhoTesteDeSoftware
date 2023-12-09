@@ -1,16 +1,13 @@
 package ufjf.grupojj.trabalhotsw.test;
 
-//import org.junit.jupiter.api.Test;
-
 import org.junit.Test;
 
 import ufjf.grupojj.trabalhotsw.view.Aquario;
 import ufjf.grupojj.trabalhotsw.view.main;
 
-import static org.junit.Assert.*;
+public class baduinoEstruturalTest {
 
-public class AquarioTest {
-
+/*
 	@Test
 	public void testeFuncional1(){
 		System.out.println("Teste 1");
@@ -150,7 +147,5 @@ public class AquarioTest {
 		aquario.inicializar(50, 1);
 		aquario.atualizarAquario();
 	}
-	
-
-	
+	*/
 }
