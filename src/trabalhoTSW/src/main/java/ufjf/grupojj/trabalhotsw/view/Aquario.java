@@ -151,19 +151,19 @@ public class Aquario {
 /*9*/		// senão, atualiza valor de ma (não se movimenta, todas as células ao seu redor
 /*9*/		// estão ocupadas)
 /*9*/		else {
-/*10*/			int aux_ma = peixesA.get(i).getMa() + 1;
-/*10*/			peixesA.get(i).setMa(aux_ma);
-/*10*/			// se ma atingir valor máximo, peixe morre.
+/*9*/			int aux_ma = peixesA.get(i).getMa() + 1;
+/*9*/			peixesA.get(i).setMa(aux_ma);
+/*9*/			// se ma atingir valor máximo, peixe morre.
 /*10*/			if (aux_ma == ma) {
 /*11*/				peixesA.remove(i);
 /*11*/				aquario[x][y] = ' ';
-/*11*/			}
+/*12*/			}
 /*12*/			// senão apenas reinicia o valor de ra.
 /*12*/			else {
 /*12*/				peixesA.get(i).setRa(0);
 /*13*/			}
-/*13*/		}
-/*13*/	}
+/*14*/		}
+/*14*/	}
 
 	public void movimentaB(int x, int y, int i) {
 
