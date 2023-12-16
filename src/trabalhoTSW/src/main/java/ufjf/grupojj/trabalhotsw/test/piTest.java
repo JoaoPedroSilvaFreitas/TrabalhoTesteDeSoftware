@@ -151,4 +151,38 @@ public class piTest {
 		aquario.movimentaA(1, 0, 0);
 	}
 	
+	
+	public void pitest16() {
+		Aquario aquario = new Aquario(5, 5, 3, 3, 3, 3);
+		aquario.inicializar(5,5);
+		
+		
+		aquario.getPeixesA();
+		aquario.getPeixesB();
+		
+		aquario.getAquario();
+		aquario.printAquario();
+		
+		aquario.getDim_x();
+		aquario.setDim_x(10);
+		aquario.getDim_y();
+		aquario.setDim_y(10);
+		
+		aquario.getAquario();
+		
+		aquario.printAquario();
+	}
+	
+	
+	public void pitest17() {
+		Aquario aquario = new Aquario(5, 5, 3, 3, 3, 3);
+		aquario.inicializar(0,1);
+		aquario.movimentaA(0, 0, 0);
+		aquario.atualizaPosMovimentoB(0, 0, 0);
+		aquario.movimentaA(1, 1, 1);
+		aquario.atualizaPosMovimentoB(1, 1, 1);
+		
+	}
+	
+	
 }

@@ -100,7 +100,7 @@ public class baduinoControleTest {
 		main.iniciaJogo(1,1,1,1,1,1,1,1);
 	}
 	
-	
+	*/
 	
 	@Test
 	public void testeInicializa1(){//todos os arcos
@@ -136,7 +136,7 @@ public class baduinoControleTest {
 		aquario.movimentaA(1, 1, 0);
 		aquario.atualizaPosMovimentoA(1,1,0);
 	}
-	
+	/*
 	@Test
 	public void testeVerificaFim1(){//{1,3,4,5,9}
 		System.out.println("Teste 1");
@@ -159,7 +159,7 @@ public class baduinoControleTest {
 		Aquario aquario = new Aquario(2,2,1,1,1,1);//cria aquario
 		aquario.inicializar(2,2);//inicializa aquario			
 		main.verificaFim(aquario.getPeixesB().size());
-	}
+	}*/
 	
 	@Test
 	public void testeMovimentaA1() {
@@ -203,6 +203,6 @@ public class baduinoControleTest {
 		aquario.movimentaA(1, 0, 0);
 	}
 	
-*/
+
 
 }
