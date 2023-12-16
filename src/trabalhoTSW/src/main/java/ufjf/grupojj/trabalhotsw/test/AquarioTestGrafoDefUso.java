@@ -122,10 +122,7 @@ class AquarioTestGrafoDefUso {
 // Todas difinicoes
 	
 	@Test
-<<<<<<< HEAD
-	public void testDef_movA1_peixesA() {
-=======
-	void testDef_movA_x() {
+	public void testDef_movA1_peixesA1() {
 		Aquario aquario = new Aquario(3, 3, 0, 0, 0, 0);
 		aquario.inicializar(6, 3);
 		aquario.movimentaA(2, 2, 0);	
@@ -147,7 +144,6 @@ class AquarioTestGrafoDefUso {
 	
 	@Test
 	void testDef_movA1_peixesA() {
->>>>>>> ed52d83d4cfb2ca6c5466c809bc03a02ebc9d30c
 		Aquario aquario = new Aquario(2, 2, 0, 0, 1, 1);
 		aquario.inicializar(1, 0);
 	
