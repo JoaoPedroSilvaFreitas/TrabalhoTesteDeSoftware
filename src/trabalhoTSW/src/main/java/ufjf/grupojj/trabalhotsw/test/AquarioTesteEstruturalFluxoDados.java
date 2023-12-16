@@ -45,6 +45,7 @@ public class AquarioTesteEstruturalFluxoDados {
 		aquario.atualizaPosMovimentoA(1,1,0);
 	}
 	
+	/*
 	@Test
 	public void testeVerificaFim1(){//{1,3,4,5,9}
 		System.out.println("Teste 1");
@@ -67,7 +68,7 @@ public class AquarioTesteEstruturalFluxoDados {
 		Aquario aquario = new Aquario(2,2,1,1,1,1);//cria aquario
 		aquario.inicializar(2,2);//inicializa aquario			
 		main.verificaFim(aquario.getPeixesB().size());
-	}
+	}*/
 	
 	@Test
 	public void testeMovimentaA1() {

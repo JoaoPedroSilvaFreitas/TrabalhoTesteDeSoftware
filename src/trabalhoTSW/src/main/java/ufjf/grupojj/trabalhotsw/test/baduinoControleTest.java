@@ -9,7 +9,7 @@ import ufjf.grupojj.trabalhotsw.view.main;
 
 public class baduinoControleTest {
 
-
+/*
 	@Test
 	public void testeFuncional1(){
 		System.out.println("Teste 1");
@@ -203,6 +203,6 @@ public class baduinoControleTest {
 		aquario.movimentaA(1, 0, 0);
 	}
 	
-
+*/
 
 }

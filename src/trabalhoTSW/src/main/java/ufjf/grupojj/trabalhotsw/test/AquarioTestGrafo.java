@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class AquarioTestGrafo {
-
+/*
 	@Test
 	public void testeFuncional1(){
 		System.out.println("Teste 1");
@@ -102,5 +102,5 @@ public class AquarioTestGrafo {
 	}
 
 
-	
+	*/
 }

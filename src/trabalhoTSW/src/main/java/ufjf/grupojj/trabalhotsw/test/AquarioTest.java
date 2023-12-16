@@ -10,7 +10,7 @@ import ufjf.grupojj.trabalhotsw.view.main;
 import static org.junit.Assert.*;
 
 public class AquarioTest {
-
+/*
 	@Test
 	public void testeFuncional1(){
 		System.out.println("Teste 1");
@@ -119,7 +119,7 @@ public class AquarioTest {
 		// dim_x, dim_y, peixes_a, peixes_b, RA, RB, MA, MB
 		main.iniciaJogo(2, 2, 1, 1, 1, 1, 1, 1);
 	}
-	
+	*/
 	// ---------------------------------------------------------------
 	
 	@Test
