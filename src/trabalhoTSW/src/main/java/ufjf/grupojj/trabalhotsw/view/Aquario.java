@@ -29,7 +29,27 @@ public class Aquario {
 		peixesA = new ArrayList<PeixeA>();
 		peixesB = new ArrayList<PeixeB>();
 	}
-
+	
+	public int getRb()
+	{
+		return this.rb;
+	}
+	
+	public int getMb()
+	{
+		return this.mb;
+	}
+	
+	public int getRa()
+	{
+		return this.ra;
+	}
+	
+	public int getMa()
+	{
+		return this.ma;
+	}
+	
 	public List<PeixeA> getPeixesA()
 	{
 		return peixesA;

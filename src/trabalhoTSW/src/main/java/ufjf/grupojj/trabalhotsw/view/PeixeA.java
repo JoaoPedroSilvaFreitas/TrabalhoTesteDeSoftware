@@ -11,8 +11,13 @@ public class PeixeA {
     //número de vezes que não se movimentam.
     int ma;
 
+    /*
     public PeixeA() {
         this.id = ' ';
+    }*/
+    
+    public PeixeA(char id) {
+        this.id = id;
     }
 
     public PeixeA(char id, int posicao_x, int posicao_y) {
